@@ -530,7 +530,12 @@ Config::detectCurrentKeyboardLayout()
     QString currentVariant;
     QString currentModel;
 
-    if ( m_configureLocale1 )
+    if ( !m_configuredLayout.isEmpty() )
+    {
+        currentLayout = m_configuredLayout;
+        currentVariant = m_configuredVariant;
+    }
+    else if ( m_configureLocale1 )
     {
         getCurrentKeyboardLayoutLocale1( currentLayout, currentVariant, currentModel );
     }
@@ -821,6 +826,8 @@ Config::setConfigurationMap( const QVariantMap& configurationMap )
     m_configureKWin = getBool( configureItems, "kwin", false );
 
     m_guessLayout = getBool( configurationMap, "guessLayout", true );
+    m_configuredLayout = getString( configurationMap, "keyboardLayout" );
+    m_configuredVariant = getString( configurationMap, "keyboardVariant" );
 }
 
 void

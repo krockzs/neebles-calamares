@@ -122,6 +122,8 @@ private:
     bool m_configureLocale1 = false;
     bool m_configureKWin = false;
     bool m_guessLayout = false;
+    QString m_configuredLayout;
+    QString m_configuredVariant;
 
     // The state determines whether we guess settings or preserve them:
     // - Initial -> Guessing

@@ -1,67 +1,63 @@
-<!-- SPDX-FileCopyrightText: no
-     SPDX-License-Identifier: CC0-1.0
--->
+# N.E.E.B.L.E.S. Calamares
 
-# Calamares: Distribution-Independent Installer Framework
----------
+This repository contains a modified version of **Calamares**, used as part of the N.E.E.B.L.E.S. OS installer.
 
-[![Current issue](https://img.shields.io/badge/issue-in_progress-FE9B48)](https://github.com/calamares/calamares/labels/hacking%3A%20in-progress)
-[![GitHub release](https://img.shields.io/github/release/calamares/calamares.svg)](https://github.com/calamares/calamares/releases)
-[![GitHub Build Status](https://img.shields.io/github/actions/workflow/status/calamares/calamares/push.yml)](https://github.com/calamares/calamares/actions?query=workflow%3Aci)
-[![GitHub license](https://img.shields.io/badge/license-Multiple-green)](https://github.com/calamares/calamares/tree/calamares/LICENSES)
+## Upstream Project
 
+The original source code belongs to the **Calamares project and its contributors**.
 
-| [Report a Bug](https://github.com/calamares/calamares/issues/new) | [Translate](https://app.transifex.com/calamares/calamares/) | [Contribute](CONTRIBUTING.md) | [Chat on Matrix: #calamares:kde.org](https://webchat.kde.org/#/room/%23calamares:kde.org) | [Wiki](https://github.com/calamares/calamares/wiki) |
-|:--:|:--:|:--:|:--:|:--:|
+Upstream project:
 
+https://github.com/calamares/calamares
 
-> Calamares is a distribution-independent system installer, with an advanced partitioning
-> feature for both manual and automated partitioning operations. Calamares is designed to
-> be customizable by distribution maintainers without the need for cumbersome patching,
-> thanks to third-party branding and external modules support.
+N.E.E.B.L.E.S. does not claim authorship of the original Calamares codebase.
 
-## Target Audience
+This repository exists only to maintain the changes required by N.E.E.B.L.E.S. OS without modifying, disrupting, or imposing project-specific requirements on the upstream Calamares repository.
 
-Calamares is a Linux installer; users who install Linux on a computer will hopefully
-use it just **once**, to install their Linux distribution. Calamares is not
-a "ready to use" application: distributions apply a huge amount of customization
-and configuration to Calamares, and the target audience for this repository
-is those distributions, and the people who make those Linux distros.
+## Base Version
 
-Calamares has some [generic user documentation](https://calamares.io/docs/users-guide/)
-for end-users, but most of what we have is for distro developers.
+The N.E.E.B.L.E.S. branch was created from:
 
-## Getting Calamares
+- Calamares version: `v3.3.14`
+- Upstream commit: `21ea803527735cfaf54fa6059e71d1ef65004864`
 
-Clone Calamares from GitHub. The default branch is called *calamares*.
+All N.E.E.B.L.E.S.-specific modifications are maintained separately from upstream.
 
-```
-git clone https://github.com/calamares/calamares.git
-```
+## Purpose
 
-Calamares is a KDE-Frameworks and Qt-based, C++17, CMake-built application.
-The dependencies are explained in [CONTRIBUTING.md](CONTRIBUTING.md).
+N.E.E.B.L.E.S. OS requires some installer behavior and presentation that differ from the default Calamares implementation.
 
-## Contributing to Calamares
+This repository preserves those modifications in a dedicated codebase so that:
 
-Calamares welcomes PRs. New issues are welcome, too.
-There are both the Calamares **core** repository (this one)
-and an **extensions** repository ([Calamares extensions](https://github.com/calamares/calamares-extensions)).
+- the upstream Calamares project remains untouched;
+- the origin of the code remains explicit and traceable;
+- N.E.E.B.L.E.S.-specific changes can be developed and maintained independently;
+- modified Calamares components can be rebuilt when required;
+- the N.E.E.B.L.E.S. OS build remains reproducible and auditable.
 
-Contributions to code, modules, documentation, the wiki, and the website are all welcome.
-There is more information in the [CONTRIBUTING.md](CONTRIBUTING.md) file.
+## Relationship With N.E.E.B.L.E.S. OS
 
-## Join the Conversation
+The N.E.E.B.L.E.S. OS build repository already contains the compiled Calamares components required by the current OS build.
 
-GitHub Issues are **one** place for discussing Calamares if there are concrete
-problems or a new feature to discuss.
-Issues are not a help channel.
-Visit Matrix for help with configuration or compilation.
+This repository preserves the corresponding modified source code used to produce those components.
 
-Regular Calamares development chit-chat happens in a [Matrix](https://matrix.org/)
-room, `#calamares:kde.org`. Responsiveness is best during the day
-in Europe, but feel free to idle.
-Matrix is persistent, and we'll see your message eventually.
+Therefore, this repository is primarily the source-of-truth for future Calamares development, recompilation, maintenance, and traceability within the N.E.E.B.L.E.S. ecosystem.
 
-* [![Join us on Matrix](https://img.shields.io/badge/Matrix-%23calamares:kde.org-blue)](https://webchat.kde.org/#/room/%23calamares:kde.org) (needs a Matrix account)
+## Attribution
 
+Full credit for Calamares itself belongs to the Calamares developers and contributors.
+
+N.E.E.B.L.E.S. only maintains its own modifications on top of that work.
+
+Original copyright notices, licenses, contributor information, and attribution from the upstream project must remain intact.
+
+## Development Policy
+
+Changes made here should be limited to functionality required by N.E.E.B.L.E.S. OS.
+
+Whenever possible, N.E.E.B.L.E.S.-specific behavior should remain isolated and clearly identifiable so that differences from upstream Calamares can be reviewed and maintained over time.
+
+---
+
+**N.E.E.B.L.E.S.**  
+Nested Evolutionary Engine for Behavioral Language Emergent Systems

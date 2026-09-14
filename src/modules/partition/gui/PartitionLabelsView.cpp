@@ -360,7 +360,7 @@ PartitionLabelsView::drawLabel( QPainter* painter,
                                 const QPoint& pos,
                                 bool selected )
 {
-    painter->setPen( Qt::black );
+    painter->setPen( QColor( "#F5F5F5" ) );
     int vertOffset = 0;
     int width = 0;
     for ( const QString& textLine : text )
@@ -369,7 +369,7 @@ PartitionLabelsView::drawLabel( QPainter* painter,
         painter->drawText(
             pos.x() + LABEL_PARTITION_SQUARE_MARGIN, pos.y() + vertOffset + textSize.height() / 2, textLine );
         vertOffset += textSize.height();
-        painter->setPen( Qt::gray );
+        painter->setPen( QColor( "#A3A3A3" ) );
         width = qMax( width, textSize.width() );
     }
 
@@ -382,7 +382,7 @@ PartitionLabelsView::drawLabel( QPainter* painter,
         drawSelectionSquare( painter, partitionSquareRect.adjusted( 2, 2, -2, -2 ), color );
     }
 
-    painter->setPen( Qt::black );
+    painter->setPen( QColor( "#F5F5F5" ) );
 }
 
 QModelIndex
