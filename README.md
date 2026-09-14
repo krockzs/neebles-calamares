@@ -18,7 +18,7 @@ https://github.com/calamares/calamares
 
 Full credit for the original architecture, source code, modules, documentation, and installer framework belongs to the Calamares developers and contributors.
 
-N.E.E.B.L.E.S. OS uses Calamares as its installer framework and maintains only the modifications required for its own distribution.
+N.E.E.B.L.E.E.S. OS uses Calamares as its installer framework and maintains only the modifications required for its own distribution.
 
 Original copyright notices, licenses, authorship information, contributor history, and licensing files from upstream are intentionally preserved.
 
@@ -139,13 +139,44 @@ The affected `QPainter` pen values are used only for partition-label rendering.
 
 No partitioning logic, filesystem behavior, disk operations, partition calculations, or partition-management semantics were changed by this modification.
 
+## Slideshow integration used by N.E.E.B.L.E.S. OS
+
+The Calamares source changes above are only one part of the N.E.E.B.L.E.S. installer integration.
+
+N.E.E.B.L.E.S. OS also provides a custom slideshow runtime in the `neebles-os` repository. That runtime can progressively replace locally bundled slides with remote media while Calamares is running.
+
+Remote slideshow assets are maintained under:
+
+```text
+neebles-os/calamares/slides/
+```
+
+The current runtime supports:
+
+- PNG, JPG and JPEG images;
+- MP4 video;
+- numeric slots from 1 to 20;
+- progressive preparation during installation;
+- protection of the currently active slot so it is not replaced while being displayed;
+- temporary-file downloads followed by atomic replacement;
+- local fallback content when the network or remote assets are unavailable;
+- independent remote updates without rebuilding the ISO.
+
+The corresponding runtime implementation is integrated into the OS build as:
+
+```text
+config/includes.chroot/usr/lib/neebles/neebles-calamares-slides
+```
+
+This slideshow system is **N.E.E.B.L.E.S. OS integration code**, not part of upstream Calamares. It is documented and maintained in `krockzs/neebles-os` rather than in the upstream Calamares source tree.
+
 ## Scope of the Changes
 
 The N.E.E.B.L.E.S. modifications are intentionally narrow.
 
 The project does **not** attempt to redesign Calamares, replace its architecture, or present Calamares as N.E.E.B.L.E.S.-authored software.
 
-The current downstream changes are limited to:
+The current downstream source changes are limited to:
 
 ```text
 Keyboard configuration behavior
@@ -153,13 +184,15 @@ Locale/timezone presentation assets
 Partition-view text colors
 ```
 
+The wider N.E.E.B.L.E.S. OS integration additionally supplies its own branding, configuration, build-time integration and remote slideshow runtime outside this source repository.
+
 Where possible, distribution-specific behavior should remain isolated so differences from upstream can be reviewed, rebuilt, and rebased cleanly.
 
 ## Relationship With `neebles-os`
 
 This repository contains the **modified Calamares source code**.
 
-The `neebles-os` repository contains the N.E.E.B.L.E.S. OS build configuration and the compiled Calamares components currently injected into the OS build.
+The `neebles-os` repository contains the N.E.E.B.L.E.S. OS build configuration, the compiled Calamares components currently injected into the OS build, and the N.E.E.B.L.E.S.-specific installer runtime integrations such as the remote slideshow system.
 
 Repository responsibilities are therefore separated:
 
@@ -174,6 +207,7 @@ neebles-os
     N.E.E.B.L.E.S. OS build configuration
     Installer configuration
     Branding and OS assets
+    Remote image/video slideshow runtime
     Runtime integration
     Compiled installer modules used by the current build
 ```
